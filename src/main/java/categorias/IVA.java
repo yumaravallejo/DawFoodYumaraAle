@@ -9,5 +9,15 @@ package categorias;
  * @author yumara
  */
 public enum IVA {
+    VEINTIUNO(0.21), DIEZ(0.10);
     
+    private double porcentaje;
+
+    private IVA(double porcentaje) {
+        this.porcentaje = porcentaje;
+    }
+
+    public double getPorcentaje() {
+        return porcentaje;
+    }
 }

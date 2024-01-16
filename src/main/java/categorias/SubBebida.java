@@ -9,5 +9,6 @@ package categorias;
  * @author yumara
  */
 public enum SubBebida {
-    
+        REFRESCO, ALCOHOL, ZUMO
+
 }

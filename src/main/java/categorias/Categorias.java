@@ -9,5 +9,6 @@ package categorias;
  * @author yumara
  */
 public enum Categorias {
-    
+        COMIDA, BEBIDA, POSTRE;
+
 }
