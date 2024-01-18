@@ -4,10 +4,55 @@
  */
 package objetos;
 
+import static java.lang.Math.random;
+
+import java.time.LocalDateTime;
+import java.util.Random;
+import java.util.UUID;
+
 /**
  *
  * @author yumara
  */
 public class TPV {
     
+    private Random rd = new Random();
+    private final UUID id;
+    private String ubicacion;
+    private LocalDateTime fechHorSis;
+    private String contraAdmin;
+
+    public TPV(String ubicacion) {
+        this.id = UUID.randomUUID();
+        this.ubicacion = ubicacion;
+        this.fechHorSis = LocalDateTime.now();
+        
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public LocalDateTime getFechHorSis() {
+        return fechHorSis;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("TPV{");
+        sb.append("id=").append(id);
+        sb.append(", ubicacion=").append(ubicacion);
+        sb.append(", fechHorSis=").append(fechHorSis);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -9,5 +9,11 @@ package principal;
  * @author yumara
  */
 public class Programa {
+    public static void main(String[] args) {
+        
     
+    objetos.TPV tpv = new objetos.TPV("mesa");
+    
+        System.out.println(tpv);
+    }
 }
