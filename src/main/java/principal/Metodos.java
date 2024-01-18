@@ -41,4 +41,31 @@ public class Metodos {
             }
         } while (repeticion);
     }
+
+    public int menuInicialUsuario() {
+
+        String[] botones = {" Ver comida", " Ver bebida", " Ver postre"};
+
+        int eleccion = JOptionPane.showOptionDialog(null,
+                " ¿Qué desea ver?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.WARNING_MESSAGE, null/*icono*/, botones, botones[0]);
+
+        return eleccion;
+    }
+
+    public void mostrarComida() {
+
+    }
+
+    public void usuario() {
+
+        int eleccion = menuInicialUsuario();
+
+        switch (eleccion) {
+
+            case 0 -> {
+
+            }
+        }
+    }
 }

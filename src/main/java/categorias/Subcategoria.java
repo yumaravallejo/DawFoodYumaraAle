@@ -8,7 +8,7 @@ package categorias;
  *
  * @author yumara
  */
-public enum SubBebida {
-        REFRESCO, ALCOHOL, ZUMO
+public enum Subcategoria {
+       CARNE, MARISCO, PASTA, REFRESCO, ALCOHOL, ZUMO
 
 }
