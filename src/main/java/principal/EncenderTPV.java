@@ -8,6 +8,4 @@ package principal;
  *
  * @author yumara
  */
-public class EncenderTPV {
-    
-}
+

@@ -4,6 +4,8 @@
  */
 package principal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author yumara
