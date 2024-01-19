@@ -27,13 +27,14 @@ public class Metodos {
         boolean repeticion = true;
 
         do {
-            int eleccion = menuInicial();
-
-            switch (eleccion) {
+            //El método menúInicial nos dará un tipo int con la opción elegida
+            switch (menuInicial()) {
+                //Modo Usuario
                 case 0 -> {
-                    System.out.println("Modo Usuario");
+                    
 
                 }
+                //Modo Administrador
                 case 1 -> {
                     System.out.println("Modo Administrador");
 
@@ -42,12 +43,13 @@ public class Metodos {
         } while (repeticion);
     }
 
-    public int menuInicialUsuario() {
+    public int menuOpciInicial() {
 
-        String[] botones = {" Ver comida", " Ver bebida", " Ver postre"};
+        //Mostrará la pregunta con 4 botones y devolverá números según la opción elegida, empezando por el 0
+        String[] botones = {" Ver comida", " Ver bebidas", " Ver postres", "Ver carrito"};
 
         int eleccion = JOptionPane.showOptionDialog(null,
-                " ¿Qué desea ver?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                " ¿Qué quiere ver?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.WARNING_MESSAGE, null/*icono*/, botones, botones[0]);
 
         return eleccion;
@@ -59,13 +61,24 @@ public class Metodos {
 
     public void usuario() {
 
-        int eleccion = menuInicialUsuario();
+        switch (menuOpciInicial()) {
 
-        switch (eleccion) {
-
-            case 0 -> {
+            case 0 -> { //Ver Comidas
+                
+            }
+            case 1 -> { //Ver bebidas
 
             }
+
+            case 2 -> { //Ver postres
+
+            }
+
+            case 3 -> { //Ver carrito
+
+            }
+
         }
     }
 }
+

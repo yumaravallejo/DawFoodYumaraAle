@@ -4,11 +4,7 @@
  */
 package principal;
 
-import categorias.Categorias;
-import categorias.IVA;
-import categorias.Subcategoria;
 import javax.swing.JOptionPane;
-import objetos.Producto;
 
 /**
  *
@@ -18,11 +14,17 @@ public class Programa {
 
     public static void main(String[] args) {
 
-        objetos.TPV tpv = new objetos.TPV("mesa");
+        principal.TPV tpv = new principal.TPV("mesa");
 
         System.out.println(tpv);
 
-        Producto p1 = new Producto("Holis", Categorias.COMIDA, Subcategoria.CARNE, 7, IVA.DIEZ, 1);
+        Productos p1 = new Productos("Holis", Categorias.COMIDA, Subcategoria.CARNE, 7, IVA.DIEZ, 1);
         System.out.println(p1);
+        
+        Catalogo c1 = new Catalogo();
+        
+        c1.añadir(p1);
+        
+        System.out.println(c1.toString());
     }
 }
