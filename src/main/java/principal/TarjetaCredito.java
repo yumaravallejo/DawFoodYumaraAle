@@ -5,6 +5,7 @@
 package principal;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -21,10 +22,7 @@ public class TarjetaCredito {
         this.fechaCaduc = fechaCaduc;
         this.CVV = CVV;
         this.saldo = saldo;
-        this.digitos = digitos;
-        
-        
-   
+        this.digitos = digitos;   
     }
 
     public LocalDate getFechaCaduc() {
@@ -57,5 +55,51 @@ public class TarjetaCredito {
 
     public void setDigitos(int digitos) {
         this.digitos = digitos;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("TarjetaCredito{");
+        sb.append("fechaCaduc=").append(fechaCaduc);
+        sb.append(", CVV=").append(CVV);
+        sb.append(", saldo=").append(saldo);
+        sb.append(", digitos=").append(digitos);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.fechaCaduc);
+        hash = 29 * hash + this.CVV;
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.saldo) ^ (Double.doubleToLongBits(this.saldo) >>> 32));
+        hash = 29 * hash + this.digitos;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TarjetaCredito other = (TarjetaCredito) obj;
+        if (this.CVV != other.CVV) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.saldo) != Double.doubleToLongBits(other.saldo)) {
+            return false;
+        }
+        if (this.digitos != other.digitos) {
+            return false;
+        }
+        return Objects.equals(this.fechaCaduc, other.fechaCaduc);
     }
 }
