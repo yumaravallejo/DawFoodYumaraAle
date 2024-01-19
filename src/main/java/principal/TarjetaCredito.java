@@ -16,13 +16,13 @@ public class TarjetaCredito {
     private LocalDate fechaCaduc;
     private int CVV;
     private double saldo;
-    private int digitos;
+    private int digitos; //numero de la tarjeta
 
     public TarjetaCredito(LocalDate fechaCaduc, int CVV, double saldo, int digitos) {
         this.fechaCaduc = fechaCaduc;
         this.CVV = CVV;
         this.saldo = saldo;
-        this.digitos = digitos;   
+        this.digitos = digitos;
     }
 
     public LocalDate getFechaCaduc() {
@@ -56,6 +56,8 @@ public class TarjetaCredito {
     public void setDigitos(int digitos) {
         this.digitos = digitos;
     }
+    
+    
 
     @Override
     public String toString() {

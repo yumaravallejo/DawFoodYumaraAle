@@ -21,13 +21,16 @@ public class TPV {
     private String ubicacion;
     private LocalDateTime fechHorSis;
     private String contraAdmin;
+    private int ventasCompletadas;
 
     public TPV(String ubicacion) {
         this.id = UUID.randomUUID();
         this.ubicacion = ubicacion;
         this.fechHorSis = LocalDateTime.now();
-        
+        this.ventasCompletadas = ventasCompletadas;
+        this.contraAdmin = ;
     }
+    
 
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;

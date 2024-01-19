@@ -4,6 +4,7 @@
  */
 package principal;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +32,6 @@ public class Metodos {
             switch (menuInicial()) {
                 //Modo Usuario
                 case 0 -> {
-                    
 
                 }
                 //Modo Administrador
@@ -59,12 +59,34 @@ public class Metodos {
 
     }
 
+    public void pasarelaPago(PasarelaPago p) {
+
+        boolean correcto = true;
+
+        do {
+            try {
+                //Solicita la contraseña de la tarjeta de crédito
+                String contraTexto = JOptionPane.showInputDialog(null,
+                        "Introduce los últimos 4 dígitos de la contraseña");
+                int contraTC = Integer.parseInt(contraTexto);
+                if (contraTexto.length() != 4 ) {
+                    System.out.println("Introduce 4 dígitos");
+                    correcto = false;
+                }
+            } catch (IllegalArgumentException iae) {
+                System.out.println("Introduce valores correctos");
+            }
+        } while (!correcto);
+
+        
+    }
+
     public void usuario() {
 
         switch (menuOpciInicial()) {
 
             case 0 -> { //Ver Comidas
-                
+
             }
             case 1 -> { //Ver bebidas
 
@@ -81,4 +103,3 @@ public class Metodos {
         }
     }
 }
-
