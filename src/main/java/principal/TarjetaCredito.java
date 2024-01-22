@@ -71,7 +71,24 @@ public class TarjetaCredito {
     }
     
     public boolean compararNumeros (int digito1, int digito2, int digito3, int digito4) {
+        boolean correcto = false;
+        if (digito1 == digitos[12]) {
+            correcto = true;
+        } else {return false;}
         
+        if (digito2 == digitos[13]) {
+            correcto = true;
+        } else {return false;}
+        
+        if (digito3 == digitos[14]) {
+            correcto = true;
+        } else {return false;}
+        
+        if (digito4 == digitos[15]) {
+            correcto = true;
+        } else {return false;}
+        
+        return true;
     }
 
     @Override
