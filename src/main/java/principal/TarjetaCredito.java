@@ -5,7 +5,10 @@
 package principal;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  *
@@ -13,23 +16,33 @@ import java.util.Objects;
  */
 public class TarjetaCredito {
     
-    private LocalDate fechaCaduc;
+    private YearMonth fechaCaduc;
     private int CVV;
     private double saldo;
-    private int digitos; //numero de la tarjeta
+    private int[] digitos; //numero de la tarjeta
+    private final int TAM_TARJ = 16;
 
-    public TarjetaCredito(LocalDate fechaCaduc, int CVV, double saldo, int digitos) {
-        this.fechaCaduc = fechaCaduc;
-        this.CVV = CVV;
-        this.saldo = saldo;
-        this.digitos = digitos;
+    public TarjetaCredito() {
+        Random rd = new Random();
+        int mes = rd.nextInt(1,13);
+        int año = rd.nextInt(2020, 2035);
+        this.fechaCaduc = YearMonth.of(año, mes);
+        //Creamos el CVV
+        int numeroCVV1 = rd.nextInt(0,10);
+        int numeroCVV2 = rd.nextInt(0,10);
+        int numeroCVV3 = rd.nextInt(0,10);
+        this.CVV = numeroCVV1 + numeroCVV2 + numeroCVV3;
+        this.saldo = rd.nextDouble(0, 501);
+        for (int i=0; i<TAM_TARJ; i++){
+            this.digitos[i] = rd.nextInt(0,10);
+        }
     }
 
-    public LocalDate getFechaCaduc() {
+    public YearMonth getFechaCaduc() {
         return fechaCaduc;
     }
 
-    public void setFechaCaduc(LocalDate fechaCaduc) {
+    public void setFechaCaduc(YearMonth fechaCaduc) {
         this.fechaCaduc = fechaCaduc;
     }
 
@@ -49,15 +62,17 @@ public class TarjetaCredito {
         this.saldo = saldo;
     }
 
-    public int getDigitos() {
+    public int[] getDigitos() {
         return digitos;
     }
 
-    public void setDigitos(int digitos) {
+    public void setDigitos(int[] digitos) {
         this.digitos = digitos;
     }
     
-    
+    public boolean compararNumeros (int digito1, int digito2, int digito3, int digito4) {
+        
+    }
 
     @Override
     public String toString() {
@@ -69,16 +84,6 @@ public class TarjetaCredito {
         sb.append(", digitos=").append(digitos);
         sb.append('}');
         return sb.toString();
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.fechaCaduc);
-        hash = 29 * hash + this.CVV;
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.saldo) ^ (Double.doubleToLongBits(this.saldo) >>> 32));
-        hash = 29 * hash + this.digitos;
-        return hash;
     }
 
     @Override
@@ -104,4 +109,16 @@ public class TarjetaCredito {
         }
         return Objects.equals(this.fechaCaduc, other.fechaCaduc);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.fechaCaduc);
+        hash = 59 * hash + this.CVV;
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.saldo) ^ (Double.doubleToLongBits(this.saldo) >>> 32));
+        hash = 59 * hash + Arrays.hashCode(this.digitos);
+        return hash;
+    }
+    
+    
 }

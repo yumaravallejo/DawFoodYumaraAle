@@ -14,17 +14,9 @@ public class Programa {
 
     public static void main(String[] args) {
 
-        principal.TPV tpv = new principal.TPV("mesa");
-
-        System.out.println(tpv);
-
-        Productos p1 = new Productos("Holis", Categorias.COMIDA, Subcategoria.CARNE, 7, IVA.DIEZ, 1);
-        System.out.println(p1);
+     
+        pp1.pasarelaPagoB();
         
-        Catalogo c1 = new Catalogo();
         
-        c1.añadir(p1);
-        
-        System.out.println(c1.toString());
     }
 }

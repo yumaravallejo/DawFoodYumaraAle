@@ -7,6 +7,7 @@ package principal;
 import static java.lang.Math.random;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
@@ -22,13 +23,15 @@ public class TPV {
     private LocalDateTime fechHorSis;
     private String contraAdmin;
     private int ventasCompletadas;
+    private ArrayList<Productos> carrito;
 
     public TPV(String ubicacion) {
         this.id = UUID.randomUUID();
         this.ubicacion = ubicacion;
         this.fechHorSis = LocalDateTime.now();
-        this.ventasCompletadas = ventasCompletadas;
+        this.ventasCompletadas = 0;
         this.contraAdmin = ;
+        this.carrito = new ArrayList<>();
     }
     
 
