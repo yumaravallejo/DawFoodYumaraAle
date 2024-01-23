@@ -15,8 +15,11 @@ public class Programa {
     public static void main(String[] args) {
 
      
-        pp1.pasarelaPagoB();
+           
         
+    
+    
+}
         
     }
-}
+

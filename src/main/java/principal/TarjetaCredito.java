@@ -33,6 +33,7 @@ public class TarjetaCredito {
         int numeroCVV3 = rd.nextInt(0,10);
         this.CVV = numeroCVV1 + numeroCVV2 + numeroCVV3;
         this.saldo = rd.nextDouble(0, 501);
+        this.digitos = new int[TAM_TARJ];
         for (int i=0; i<TAM_TARJ; i++){
             this.digitos[i] = rd.nextInt(0,10);
         }
@@ -65,31 +66,28 @@ public class TarjetaCredito {
     public int[] getDigitos() {
         return digitos;
     }
+    
+    public int getDigito1() {
+        return digitos[12];
+    }
+    
+    public int getDigito2() {
+        return digitos[13];
+    }
+    
+    public int getDigito3() {
+        return digitos[14];
+    }
+    public int getDigito4() {
+        return digitos[15];
+    }
+    
 
     public void setDigitos(int[] digitos) {
         this.digitos = digitos;
     }
     
-    public boolean compararNumeros (int digito1, int digito2, int digito3, int digito4) {
-        boolean correcto = false;
-        if (digito1 == digitos[12]) {
-            correcto = true;
-        } else {return false;}
-        
-        if (digito2 == digitos[13]) {
-            correcto = true;
-        } else {return false;}
-        
-        if (digito3 == digitos[14]) {
-            correcto = true;
-        } else {return false;}
-        
-        if (digito4 == digitos[15]) {
-            correcto = true;
-        } else {return false;}
-        
-        return true;
-    }
+    
 
     @Override
     public String toString() {
@@ -137,5 +135,6 @@ public class TarjetaCredito {
         return hash;
     }
     
-    
 }
+
+

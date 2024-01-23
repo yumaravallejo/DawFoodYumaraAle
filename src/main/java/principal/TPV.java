@@ -30,7 +30,7 @@ public class TPV {
         this.ubicacion = ubicacion;
         this.fechHorSis = LocalDateTime.now();
         this.ventasCompletadas = 0;
-        this.contraAdmin = ;
+
         this.carrito = new ArrayList<>();
     }
     

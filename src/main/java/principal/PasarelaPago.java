@@ -15,105 +15,88 @@ import javax.swing.JOptionPane;
  * @author alejandro
  */
 public class PasarelaPago {
- 
+
     private ArrayList<TarjetaCredito> pasarela;
-    
+
     //Constructor predeterminado
     public PasarelaPago() {
         this.pasarela = new ArrayList<>();
     }
-    
-    //Métodos de ordenación
-    public void ordenarPorDigitos () {
-        Collections.sort(pasarela,(c1,c2) -> Integer.compare(c1.getDigitos(), c2.getDigitos()));
-    }
-    
-    public void ordenarPorCVV () {
-        Collections.sort(pasarela,(c1,c2) -> Integer.compare(c1.getCVV(), c2.getCVV()));
-    }
-    
-    public void ordenarPorFecha () {
-        Collections.sort(pasarela, (c1,c2) -> (c1.getFechaCaduc().compareTo(c2.getFechaCaduc())));
-    }
-    
-    //BinarySearch
-    public int buscarElementoDig (TarjetaCredito t, int numeroBuscado){
-        t.setDigitos(numeroBuscado);
-        ordenarPorDigitos();
-        return Collections.binarySearch(pasarela, t, (c1,c2) -> 
-                Integer.compare(c1.getDigitos(), c2.getDigitos()));
-    }
-    
-    public int buscarElementoCVV (TarjetaCredito t, int numeroBuscado){
-        t.setCVV(numeroBuscado);
-        ordenarPorCVV();
-        return Collections.binarySearch(pasarela, t, (c1,c2) -> 
-                Integer.compare(c1.getCVV(), c2.getCVV()));
-    }
-    
-    public int buscarElementoFech (TarjetaCredito t, YearMonth fechaCad){
-        t.setFechaCaduc(fechaCad);
-        ordenarPorFecha();
-        return Collections.binarySearch(pasarela, t, (c1,c2) -> 
-                (c1.getFechaCaduc().compareTo(c2.getFechaCaduc())));
-    }
-    
+
     public void pasarelaPagoB() {
-        
+
         final int MIL = 1000;
         final int DIEZ = 10;
         final int CIEN = 100;
-        
+
+        //Tarjetas de creditos creadas de manera al azar con su constructor vacío
         TarjetaCredito t0 = new TarjetaCredito();
         TarjetaCredito t1 = new TarjetaCredito();
         TarjetaCredito t2 = new TarjetaCredito();
         TarjetaCredito t3 = new TarjetaCredito();
         TarjetaCredito t4 = new TarjetaCredito();
-        
+
+        //Añadimos a la lista las tarjetas de créditos
         pasarela.add(t0);
         pasarela.add(t1);
         pasarela.add(t2);
         pasarela.add(t3);
         pasarela.add(t4);
-                
-        boolean correcto = true;
+
+        //Variables para comprobar los bucles
+        boolean valido = true;
+        boolean correcto = false;
         int contraTC = 0000;
-        
+
         do {
             try {
                 //Solicita la contraseña de la tarjeta de crédito
                 String contraTexto = JOptionPane.showInputDialog(null,
                         "Introduce los últimos 4 dígitos de la contraseña");
                 contraTC = Integer.parseInt(contraTexto);
-                if (contraTexto.length() != 4 ) {
+                if (contraTexto.length() != 4) {
                     System.out.println("Introduce 4 dígitos");
-                    correcto = false;
+                    valido = false;
                 }
             } catch (IllegalArgumentException iae) {
                 System.out.println("Introduce valores correctos");
             }
-        } while (!correcto);
+        } while (!valido);
 
-        //Comprueba la contraseña
-        //Hacemos uso del BS para buscar la tarjeta en la lista, ya está previamente ordenada 
-        
+        //Comprueba los 4 digitos
         int digito1 = contraTC / MIL; //Primer Dígito
         int digito2 = (contraTC / CIEN) % DIEZ; //Segundo Dígito
         int digito3 = (contraTC / DIEZ) % DIEZ; //Tercer Dígito
         int digito4 = contraTC % DIEZ; //Cuarto Dígito
+
+        //Bucle para entrar dentro de la lista donde se encuentran las tarjetas de credito
+        //Entraremos para comparar los digitos de esas tarjetas 
+       for (int i = 0; i < pasarela.size(); i++) {
+        if (digito1 == pasarela.get(i).getDigito1()) {
+            valido = true;
+        } else {valido = false;}
         
-        for (int i = 0; i < pasarela.size(); i++) {
-           
-        }
+        if (digito2 == pasarela.get(i).getDigito2() &&  valido==true) {
+            valido = true;
+        } else {valido = false;}
         
-    }
+        if (digito3 == pasarela.get(i).getDigito3() &&  valido==true) {
+            valido = true;
+        } else {valido = false;}
+        
+        if (digito4 ==pasarela.get(i).getDigito4() &&  valido==true) {
+            valido = true;
+        } else {valido = false;}
+        
+       }
     
+ 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Pasarela de Pago: ").append(pasarela);
         return sb.toString();
     }
-    
-    
+
 }
