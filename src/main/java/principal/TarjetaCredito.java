@@ -96,7 +96,10 @@ public class TarjetaCredito {
         sb.append("fechaCaduc=").append(fechaCaduc);
         sb.append(", CVV=").append(CVV);
         sb.append(", saldo=").append(saldo);
-        sb.append(", digitos=").append(digitos);
+        sb.append(", digitos=");
+        for (int i = 0; i < TAM_TARJ; i++) {
+            System.out.print(this.digitos[i]);
+        }
         sb.append('}');
         return sb.toString();
     }
