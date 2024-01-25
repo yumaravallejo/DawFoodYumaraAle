@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package principal;
 
 import java.time.LocalDate;
@@ -54,12 +50,36 @@ public class TarjetaCredito {
         this.fechaCaduc = fechaCaduc;
     }
 
-    public void getCVV() {
+    public void mostrarCVV() {
         for (int i = 0; i < CVV.length; i++) {
             System.out.println(CVV[i]);
         }
     }
 
+    public int getCVV1() {
+        return CVV[0];
+    }
+    
+    public int getCVV2() {
+        return CVV[1];
+    }
+
+    public int getCVV3() {
+        return CVV[2];
+    }
+    
+    public void setCVV(int[] CVV) {
+        this.CVV = CVV;
+    }
+
+    public String getSaldoCompl() {
+        return saldoCompl;
+    }
+
+    public void setSaldoCompl(String saldoCompl) {
+        this.saldoCompl = saldoCompl;
+    }
+    
     public double getSaldo() {
         return saldo;
     }
@@ -146,3 +166,4 @@ public class TarjetaCredito {
     }
 
 }
+
