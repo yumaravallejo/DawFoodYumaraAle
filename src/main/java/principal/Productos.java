@@ -17,19 +17,26 @@ import java.util.UUID;
 public class Productos {
 
     private final UUID id;
-    private String Descripcion;
+    private String nombre;
+    private String descripcion;
     private Categorias categoria;
     private Subcategoria subcategoria;
     private double precio;
     private IVA iva;
     private int stock;
 
-    public Productos(String Descripcion, Categorias categoria, Subcategoria subcategoria, double precio, IVA iva, int stock) {
+    public Productos(String nombre, String descripcion, Categorias categoria, Subcategoria subcategoria, double precio, IVA iva, int stock) {
         this.id = UUID.randomUUID();
-        this.Descripcion = Descripcion;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.categoria = categoria;
         this.subcategoria = subcategoria;
         this.precio = precio;
+        if (this.subcategoria == Subcategoria.REFRESCO ||  this.subcategoria == Subcategoria.ALCOHOL){
+        this.iva = IVA.VEINTIUNO;
+        } else {
+            this.iva = IVA.DIEZ;
+        }
         this.iva = iva;
         this.stock = stock;
     }
@@ -37,9 +44,13 @@ public class Productos {
     public UUID getId() {
         return id;
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public Categorias getCategoria() {
@@ -61,9 +72,13 @@ public class Productos {
     public int getStock() {
         return stock;
     }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public void setCategoria(Categorias categoria) {
@@ -90,12 +105,13 @@ public class Productos {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Producto ");
-        sb.append(", descripcion=").append(Descripcion);
-        sb.append(", categoria=").append(categoria);
-        sb.append(", subcategoria=").append(subcategoria);
-        sb.append(", precio=").append(precio);
-        sb.append(", iva=").append(iva);
-        sb.append(", stock=").append(stock);
+        sb.append(", nombre= ");
+        sb.append(", descripcion= ").append(descripcion);
+        sb.append(", categoria= ").append(categoria);
+        sb.append(", subcategoria= ").append(subcategoria);
+        sb.append(", precio= ").append(precio);
+        sb.append(", iva= ").append(iva);
+        sb.append(", stock= ").append(stock);
         return sb.toString();
     }
 
@@ -103,7 +119,8 @@ public class Productos {
     public int hashCode() {
         int hash = 3;
         hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.Descripcion);
+        hash = 97 * hash + Objects.hashCode(this.nombre);
+        hash = 97 * hash + Objects.hashCode(this.descripcion);
         hash = 97 * hash + Objects.hashCode(this.categoria);
         hash = 97 * hash + Objects.hashCode(this.subcategoria);
         hash = 97 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
@@ -130,7 +147,10 @@ public class Productos {
         if (this.stock != other.stock) {
             return false;
         }
-        if (!Objects.equals(this.Descripcion, other.Descripcion)) {
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
@@ -144,5 +164,8 @@ public class Productos {
         }
         return this.iva == other.iva;
     }
+
+    
+    
 
 }

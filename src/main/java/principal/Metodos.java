@@ -13,7 +13,9 @@ import javax.swing.JOptionPane;
  */
 public class Metodos {
 
-    public int menuInicial() {
+    // Metodo que muestra el menú inicial el cual pregunta en que modo iniciar el TPV
+    // el cual devuelve un int con la respuesta del cliente
+    public static int menuInicial() {
         String[] botones = {" Modo Usuario", " Modo Administrador"};
 
         int variable = JOptionPane.showOptionDialog(null,
@@ -23,26 +25,34 @@ public class Metodos {
         return variable;
     }
 
-    public void encenderTPV() {
+    // Metodo que controla al completo el TPV haciendo llamamientos a otros metodos
+    public static void encenderTPV() {
+        
+        Catalogo p = new Catalogo();
+        p.listaProductos();
 
+        // Variable que sirve para comprobar si repetir o no el programa ( Apagar el
+        // TPV o no)
         boolean repeticion = true;
 
+        // do-while para controlar cuando salir o no del TPV
         do {
-            //El método menúInicial nos dará un tipo int con la opción elegida
+            // Switch para controlar las distintas opciones de inicio del TPV.
+            // El método menúInicial nos dará un tipo int con la opción elegida
             switch (menuInicial()) {
-                //Modo Usuario
-                case 0 -> {
-                    
+
+                case 0 -> { //Modo Usuario
+                    usuario();
                 }
-                //Modo Administrador
-                case 1 -> {
-                    
+
+                case 1 -> { //Modo Administrador
+
                 }
             }
         } while (repeticion);
     }
 
-    public int menuOpciInicial() {
+    public static int menuOpciInicial() {
 
         //Mostrará la pregunta con 4 botones y devolverá números según la opción elegida, empezando por el 0
         String[] botones = {" Ver comida", " Ver bebidas", " Ver postres", "Ver carrito"};
@@ -54,16 +64,16 @@ public class Metodos {
         return eleccion;
     }
 
-    public void mostrarComida() {
+    public static void mostrarComida() {
 
     }
 
-    public void usuario() {
+    public static void usuario() {
 
         switch (menuOpciInicial()) {
 
             case 0 -> { //Ver Comidas
-
+                
             }
             case 1 -> { //Ver bebidas
 

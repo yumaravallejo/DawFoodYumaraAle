@@ -22,8 +22,6 @@ public class TarjetaCredito {
     private int[] digitos = new int[16]; //numero de la tarjeta
     private final int TAM_TARJ = 16;
     String saldoCompl;
-    
-    
 
     public TarjetaCredito() {
         Random rd = new Random();
