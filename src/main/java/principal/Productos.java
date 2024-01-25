@@ -37,7 +37,6 @@ public class Productos {
         } else {
             this.iva = IVA.DIEZ;
         }
-        this.iva = iva;
         this.stock = stock;
     }
 

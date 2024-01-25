@@ -224,11 +224,11 @@ public class PasarelaPago {
     //Este método comprobará que haya suficiente dinero
     public boolean comprobarDinero (Carrito c, TarjetaCredito t) {
         boolean valido = false;
-        if (c.getPrecioTotal() > t.getSaldo()) {
+        if (c.getPrecioTotalCon() > t.getSaldo()) {
             valido = false;
         }
         
-        if (c.getPrecioTotal() <= t.getSaldo()) {
+        if (c.getPrecioTotalCon() <= t.getSaldo()) {
             valido = true;
         }
         return valido;
