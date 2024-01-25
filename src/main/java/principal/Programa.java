@@ -4,6 +4,7 @@
  */
 package principal;
 
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,12 +15,10 @@ public class Programa {
 
     public static void main(String[] args) {
 
-     
-           
+        TPV tpv = new TPV("Mar de Alborán");
         
-    
-    
-}
-        
+        Metodos.encenderTPV(tpv);
+
     }
 
+}
