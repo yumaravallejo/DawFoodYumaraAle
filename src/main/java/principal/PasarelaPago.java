@@ -24,7 +24,7 @@ public class PasarelaPago {
         this.pasarela = new ArrayList<>();
     }
 
-    public boolean pasarelaPagoB(Carrito c) {
+    public  boolean pasarelaPagoB(Carrito c) {
 
         final int MIL = 1000;
         final int DIEZ = 10;
@@ -130,6 +130,7 @@ public class PasarelaPago {
                     JOptionPane.showMessageDialog(null, "No tienes suficiente saldo");
                     return false;
                 } else {
+                    realizarPago(pasarela.get(posicionTarje), c);
                     JOptionPane.showMessageDialog(null, "Pago realizado satisfactoriamente");
                 }
             }           
@@ -224,14 +225,19 @@ public class PasarelaPago {
     //Este método comprobará que haya suficiente dinero
     public boolean comprobarDinero (Carrito c, TarjetaCredito t) {
         boolean valido = false;
-        if (c.getPrecioTotalCon() > t.getSaldo()) {
+        if (c.getPrecioTotal() > t.getSaldo()) {
             valido = false;
         }
         
-        if (c.getPrecioTotalCon() <= t.getSaldo()) {
+        if (c.getPrecioTotal() <= t.getSaldo()) {
             valido = true;
         }
         return valido;
+    }
+    
+    public void realizarPago (TarjetaCredito t, Carrito c) {
+        double saldoNuevo =t.getSaldo() - c.getPrecioTotal();
+        t.setSaldo(saldoNuevo);
     }
     
     @Override

@@ -75,6 +75,12 @@ public class Catalogo {
                 Subcategoria.MARISCO, 5.50, IVA.DIEZ, 30);
         Productos p19 = new Productos("Almejas finas", "Almejas finas en salsa de ajito", Categorias.COMIDA,
                 Subcategoria.MARISCO, 28, IVA.DIEZ, 70);
+        Productos p20 = new Productos("Crepes", "Crepes con nata y chocolate", Categorias.POSTRE, 
+                Subcategoria.POSTRE, 3, IVA.DIEZ, 40);
+        Productos p21 = new Productos("Tarta de queso", "Tarta de queso con sirope de frutos rojos", Categorias.POSTRE, 
+                Subcategoria.POSTRE, 4.50, IVA.DIEZ, 20);
+        Productos p22 = new Productos("Flan", "Flan de vainilla", Categorias.POSTRE, 
+                Subcategoria.POSTRE, 2.50, IVA.DIEZ, 35);
         
 
         listaProductos.add(p1);

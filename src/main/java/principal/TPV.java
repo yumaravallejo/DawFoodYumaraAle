@@ -26,18 +26,22 @@ public class TPV {
     private String ubicacion;
     private LocalDateTime fechHorSis;
     private String contraAdmin;
-    private int ventasCompletadas;
+    private ArrayList<Ticket> ventasCompletadas;
     private ArrayList<Productos> carrito;
 
     public TPV(String ubicacion) {
         this.id = UUID.randomUUID();
         this.ubicacion = ubicacion;
         this.fechHorSis = LocalDateTime.now();
-        this.ventasCompletadas = 0;
+        this.ventasCompletadas = new ArrayList<>();
         this.carrito = new ArrayList<>();
         this.contraAdmin = crearContraseña();
     }
 
+    public void ventaHecha (Ticket t){
+        this.ventasCompletadas.add(t);
+    }
+    
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }

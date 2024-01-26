@@ -24,6 +24,8 @@ public class Productos {
     private double precio;
     private IVA iva;
     private int stock;
+    private int cantidadPedida;
+
 
     public Productos(String nombre, String descripcion, Categorias categoria, Subcategoria subcategoria, double precio, IVA iva, int stock) {
         this.id = UUID.randomUUID();
@@ -31,15 +33,29 @@ public class Productos {
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.subcategoria = subcategoria;
-        this.precio = precio;
         if (this.subcategoria == Subcategoria.REFRESCO ||  this.subcategoria == Subcategoria.ALCOHOL){
         this.iva = IVA.VEINTIUNO;
         } else {
             this.iva = IVA.DIEZ;
         }
+        this.precio = (precio*this.iva.getPorcentaje())/100;
         this.stock = stock;
+        this.cantidadPedida = 0;
+  
     }
-
+    
+    public Productos(Productos copia) {
+        this.id = copia.id;
+        this.cantidadPedida = copia.cantidadPedida;
+        this.nombre = copia.nombre;
+        this.categoria = copia.categoria;
+        this.descripcion = copia.descripcion;
+        this.iva = copia.iva;
+        this.precio = copia.precio;
+        this.stock = copia.stock;
+        this.subcategoria = copia.subcategoria;
+    }
+    
     public UUID getId() {
         return id;
     }
@@ -98,8 +114,17 @@ public class Productos {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }  
+
+    public int getCantidadPedida() {
+        return cantidadPedida;
     }
 
+    public void setCantidadPedida(int cantidadPedida) {
+        this.cantidadPedida = cantidadPedida;
+    }
+    
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

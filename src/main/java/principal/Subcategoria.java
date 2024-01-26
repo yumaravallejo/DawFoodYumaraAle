@@ -10,7 +10,7 @@ package principal;
  */
 public enum Subcategoria {
        CARNE("Carnes"), MARISCO("Mariscos"), PASTA("Pastas"), REFRESCO("Refrescos"), 
-       ALCOHOL("Bebidas Alcohólicas"), ZUMO("Zumos");
+       ALCOHOL("Bebidas Alcohólicas"), ZUMO("Zumos"), POSTRE("Postre");
 
        private String nombre;
 

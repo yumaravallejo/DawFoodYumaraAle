@@ -13,49 +13,60 @@ import java.util.ArrayList;
 public class Carrito {
     
     private ArrayList<Productos> carrito;
-    private double precioTotalCon; //Precio sin iva
-    private int cantidad;
+    private double precioTotal;
+
 
     public Carrito() {
         this.carrito = new ArrayList<>();
-        for (int i = 0; i < carrito.size(); i++) {
-            this.precioTotalCon+= carrito.get(i).getPrecio();
-        if (this.cantidad >= 0) {
-            this.cantidad = cantidad;
-        }
-        }
+        this.precioTotal = 0;
+        
     }
 
     public ArrayList<Productos> getCarrito() {
         return carrito;
     }
+    
+    
 
     public void setCarrito(ArrayList<Productos> carrito) {
         this.carrito = carrito;
     }
 
-    public double getPrecioTotalCon() {
-        return precioTotalCon;
+    public double getPrecioTotal() {
+        return precioTotal;
     }
 
-    public void setPrecioTotalCon(double precioTotalCon) {
-        this.precioTotalCon = precioTotalCon;
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+    
+    public Productos copiaPrd(Productos p){
+        Productos copia = new Productos (p);
+        return copia;
     }
     
     public void añadirCarrito(Productos p, int cantidad){
+        Productos copia = copiaPrd(p);
+        copia.setCantidadPedida(cantidad);
         for (int i = 0; i < cantidad; i++){
-        carrito.add(p);
+        carrito.add(copia);
+        precioTotal += (copia.getPrecio()*cantidad);
         }
     }
     
-
+    public void vaciarCarrito(){
+        carrito.clear();
+    }
+ 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Carrito{");
-        sb.append("carrito=").append(carrito);
-        sb.append(", precioTotal=").append(precioTotalCon);
-        sb.append('}');
+        for (int i = 0; i < carrito.size(); i++) {
+            sb.append(carrito.get(i).getNombre());
+            sb.append(" Precio: " + carrito.get(i).getPrecio() + "€");
+            sb.append(" Cantidad: " + carrito.get(i).getCantidadPedida());
+        }
+        sb.append("\n Total (IVA aplicado): " + precioTotal + "€");
         return sb.toString();
     }
     

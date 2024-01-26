@@ -4,6 +4,7 @@
 package principal;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -16,13 +17,12 @@ public class Ticket {
     private UUID id;
     private double Precio;
     private LocalDateTime fechaOperacion;
-    private ArrayList<Productos> productosPedidos;
+    private Carrito productos;
 
-    public Ticket(UUID id, double Precio, LocalDateTime fechaOperacion, ArrayList<Productos> productosPedidos) {
+    public Ticket(Carrito c) {
         this.id = UUID.randomUUID();
-        this.Precio = Precio;
-        this.fechaOperacion = fechaOperacion;
-        this.productosPedidos = productosPedidos;
+        this.productos = c;
+        this.fechaOperacion = LocalDateTime.now();
     }
 
     public UUID getId() {
@@ -37,8 +37,8 @@ public class Ticket {
         return fechaOperacion;
     }
 
-    public ArrayList<Productos> getProductosPedidos() {
-        return productosPedidos;
+    public Carrito getProductosPedidos() {
+        return productos;
     }
 
     public void setId(UUID id) {
@@ -53,19 +53,19 @@ public class Ticket {
         this.fechaOperacion = fechaOperacion;
     }
 
-    public void setProductosPedidos(ArrayList<Productos> productosPedidos) {
-        this.productosPedidos = productosPedidos;
+    public void setProductosPedidos(Carrito productosPedidos) {
+        this.productos = productosPedidos;
     }
+    
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Ticket{");
-        sb.append("id=").append(id);
-        sb.append(", Precio=").append(Precio);
-        sb.append(", fechaOperacion=").append(fechaOperacion);
-        sb.append(", productosPedidos=").append(productosPedidos);
-        sb.append('}');
+        sb.append("Ticket --> ");
+        sb.append("id: ").append(id);
+        sb.append(", fechaOperacion: ").append(fechaOperacion);
+        sb.append(", productosPedidos: ").append(productos);
+
         return sb.toString();
     }
 }
