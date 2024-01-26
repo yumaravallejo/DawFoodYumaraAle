@@ -13,12 +13,16 @@ import java.util.ArrayList;
 public class Carrito {
     
     private ArrayList<Productos> carrito;
-    private double precioTotalCon;
+    private double precioTotalCon; //Precio sin iva
+    private int cantidad;
 
     public Carrito() {
         this.carrito = new ArrayList<>();
         for (int i = 0; i < carrito.size(); i++) {
-            this.precioTotalCon += carrito.get(i).getPrecio();
+            this.precioTotalCon+= carrito.get(i).getPrecio();
+        if (this.cantidad >= 0) {
+            this.cantidad = cantidad;
+        }
         }
     }
 
@@ -38,8 +42,10 @@ public class Carrito {
         this.precioTotalCon = precioTotalCon;
     }
     
-    public void añadirCarrito(Productos p){
+    public void añadirCarrito(Productos p, int cantidad){
+        for (int i = 0; i < cantidad; i++){
         carrito.add(p);
+        }
     }
     
 

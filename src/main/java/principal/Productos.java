@@ -103,14 +103,10 @@ public class Productos {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Producto ");
-        sb.append(", nombre= ");
-        sb.append(", descripcion= ").append(descripcion);
-        sb.append(", categoria= ").append(categoria);
-        sb.append(", subcategoria= ").append(subcategoria);
+        sb.append(nombre);
+        sb.append(", descripcion: ").append(descripcion);
         sb.append(", precio= ").append(precio);
         sb.append(", iva= ").append(iva);
-        sb.append(", stock= ").append(stock);
         return sb.toString();
     }
 

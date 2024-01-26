@@ -5,6 +5,7 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -23,16 +24,16 @@ public class Catalogo {
 
         Productos p1 = new Productos("Hamburguesa", "Hamburguesa de "
                 + "ternera con tomate, lechuga y queso ", Categorias.COMIDA,
-                Subcategoria.CARNE, 6, IVA.DIEZ, 32);
+                Subcategoria.CARNE, 8, IVA.DIEZ, 32);
         Productos p2 = new Productos("Entrecot", " Carne de ternera"
                 + " en su punto ", Categorias.COMIDA,
-                Subcategoria.CARNE, 12, IVA.DIEZ, 18);
+                Subcategoria.CARNE, 19, IVA.DIEZ, 18);
         Productos p3 = new Productos("Pasta carbonara", "Espaguetis carbonara "
                 + " con champiñones ", Categorias.COMIDA,
-                Subcategoria.PASTA, 7, IVA.DIEZ, 24);
+                Subcategoria.PASTA, 9.50, IVA.DIEZ, 24);
         Productos p4 = new Productos("Gambas al pil-pil", " Gambas con "
                 + " ajo y cayena ", Categorias.COMIDA,
-                Subcategoria.MARISCO, 12, IVA.DIEZ, 40);
+                Subcategoria.MARISCO, 12.50, IVA.DIEZ, 40);
         Productos p5 = new Productos("Coca-Cola", " Refresco con gas ",
                 Categorias.BEBIDA, Subcategoria.REFRESCO, 2,
                 IVA.VEINTIUNO, 60);
@@ -63,12 +64,18 @@ public class Catalogo {
         Productos p14 = new Productos("Solomillo al roquefort", " Solomillo cocinado en su punto"
                 + " junto a salsa roquefort", Categorias.COMIDA,
                 Subcategoria.CARNE, 12, IVA.DIEZ, 24);
-        Productos p15 = new Productos("Hamburguesa infantil", " Pequeña hamburguesa de ternera"
-                + " de tamaño ideal para infantes", Categorias.COMIDA,
-                Subcategoria.CARNE, 5, IVA.DIEZ, 38);
-        Productos p16 = new Productos("Nuggets", " 13 nuggets ",
+        Productos p15 = new Productos("Nuggets", " 13 nuggets ",
                 Categorias.COMIDA, Subcategoria.CARNE, 6,
                 IVA.DIEZ, 24);
+        Productos p16 = new Productos("Lasaña", "Lasaña ",
+                Categorias.COMIDA,Subcategoria.PASTA, 10, IVA.DIEZ, 40);
+        Productos p17 = new Productos("Pasta al pesto", "Macarrones al pesto",
+                Categorias.COMIDA,Subcategoria.PASTA, 9.50, IVA.DIEZ, 24);
+        Productos p18 = new Productos("Ostras", "Ostras servidas con limón (se cobra la unidad) ", Categorias.COMIDA,
+                Subcategoria.MARISCO, 5.50, IVA.DIEZ, 30);
+        Productos p19 = new Productos("Almejas finas", "Almejas finas en salsa de ajito", Categorias.COMIDA,
+                Subcategoria.MARISCO, 28, IVA.DIEZ, 70);
+        
 
         listaProductos.add(p1);
         listaProductos.add(p2);
@@ -86,6 +93,8 @@ public class Catalogo {
         listaProductos.add(p14);
         listaProductos.add(p15);
         listaProductos.add(p16);
+        listaProductos.add(p17);
+        listaProductos.add(p19);
 
     }
 
@@ -93,11 +102,25 @@ public class Catalogo {
     public void añadir(Productos p) {
         listaProductos.add(p);
     }
+    
+    public Productos obtener (int i) {
+        return listaProductos.get(i);
+    }
+    
+    
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Catálogo \n").append(listaProductos);
         return sb.toString();
+    }
+
+    public ArrayList<Productos> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(ArrayList<Productos> listaProductos) {
+        this.listaProductos = listaProductos;
     }
 }

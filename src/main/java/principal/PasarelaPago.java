@@ -31,11 +31,11 @@ public class PasarelaPago {
         final int CIEN = 100;
 
         //Tarjetas de creditos creadas de manera al azar con su constructor vacío
-        TarjetaCredito t0 = new TarjetaCredito();
-        TarjetaCredito t1 = new TarjetaCredito();
-        TarjetaCredito t2 = new TarjetaCredito();
-        TarjetaCredito t3 = new TarjetaCredito();
-        TarjetaCredito t4 = new TarjetaCredito();
+        TarjetaCredito t0 = new TarjetaCredito("Javier");
+        TarjetaCredito t1 = new TarjetaCredito("Felipe");
+        TarjetaCredito t2 = new TarjetaCredito("Óscar");
+        TarjetaCredito t3 = new TarjetaCredito("Rafael");
+        TarjetaCredito t4 = new TarjetaCredito("Nuria");
 
         System.out.println(t0.toString());
         System.out.println(t1.toString());

@@ -28,8 +28,10 @@ public class Metodos {
     // Metodo que controla al completo el TPV haciendo llamamientos a otros metodos
     public static void encenderTPV(TPV TPV) {
 
-        Catalogo p = new Catalogo();
-        p.listaProductos();
+        Catalogo catalogo = new Catalogo();
+        catalogo.listaProductos();
+
+        Carrito carrito = new Carrito();
 
         // Variable que sirve para comprobar si repetir o no el programa ( Apagar el
         // TPV o no)
@@ -42,11 +44,10 @@ public class Metodos {
             switch (menuInicial()) {
 
                 case 0 -> { //Modo Usuario
-                    usuario();
+                    usuario(catalogo, carrito);
                 }
 
                 case 1 -> { //Modo Administrador
-                    //Modo Usuario
 
                 }
             }
@@ -54,7 +55,7 @@ public class Metodos {
         } while (repeticion);
     }
 
-    public static void usuario() {
+    public static void usuario(Catalogo c, Carrito carrito) {
 
         String[] botones = {"Ver Comida", "Ver Bebidas", "Ver Postres", "Ver Carritos"};
 
@@ -72,26 +73,140 @@ public class Metodos {
                         " ¿Qué quieres pedir?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
                         JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesC, botonesC[0]);
                 switch (eleccionComida) {
+
                     case 0 -> { //Ver Carnes
-                        String[] botonesCar = {"", "", ""};
+                        Object[] botonesCar = {"Hamburguesa", "Entrecot", "Nuggets",};
 
-                        int eleccionCarne = JOptionPane.showOptionDialog(null,
-                                " ¿Qué tipo de plato de carne quieres?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
-                                JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesCar, botonesCar[0]);
-                        switch (eleccionCarne) {
+                        Object opcion = JOptionPane.showInputDialog(null, "¿Qué quieres pedir?", "Elegir", JOptionPane.QUESTION_MESSAGE, null,
+                                botonesCar, botonesCar[0]);
 
+                        if (opcion.equals("Hamburguesa")) {
+                            String[] botonesConf = {"Sí", "No"};
+
+                            int confirmar = JOptionPane.showOptionDialog(null, c.obtener(0).toString() + "\n ¿Estás seguro que quieres pedirlo?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                                    JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesConf, botonesConf[0]);
+
+                            switch (confirmar) {
+                                case 0 -> {
+                                    int cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Qué cantidad quieres pedir?"));
+                                    carrito.añadirCarrito(c.obtener(0), cantidad);
+                                }
+
+                                case 1 -> {
+                                    //Aquí debe volver atrás
+                                }
+                            }
                         }
+
+                        if (opcion.equals("Entrecot")) {
+                            String[] botonesConf = {"Sí", "No"};
+
+                            int confirmar = JOptionPane.showOptionDialog(null, c.obtener(1).toString() + "\n ¿Estás seguro que quieres pedirlo?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                                    JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesConf, botonesConf[0]);
+
+                            switch (confirmar) {
+                                case 0 -> {
+                                    int cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Qué cantidad quieres pedir?"));
+                                    carrito.añadirCarrito(c.obtener(1), cantidad);
+                                }
+
+                                case 1 -> {
+                                    //Aquí debe volver atrás
+                                }
+                            }
+                        }
+
+                        if (opcion.equals("Solomillo")) {
+                            String[] botonesConf = {"Sí", "No"};
+
+                            int confirmar = JOptionPane.showOptionDialog(null, c.obtener(13).toString() + "\n ¿Estás seguro que quieres pedirlo?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                                    JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesConf, botonesConf[0]);
+
+                            switch (confirmar) {
+                                case 0 -> {
+                                    int cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Qué cantidad quieres pedir?"));
+                                    carrito.añadirCarrito(c.obtener(1), cantidad);
+                                }
+
+                                case 1 -> {
+                                    //Aquí debe volver atrás
+                                }
+                            }
+                        }
+
                     }
 
                     case 1 -> { //Ver Pastas 
-                        String[] botonesPas = {"", "", ""};
+                        Object[] botonesCar = {"Pasta carbonara", "Lasaña", "Pasta al pesto",};
 
-                        int eleccionPas = JOptionPane.showOptionDialog(null,
-                                " ¿Qué tipo de plato de carne quieres?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
-                                JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesPas, botonesPas[0]);
-                        switch (eleccionPas) {
+                        Object opcion = JOptionPane.showInputDialog(null, "¿Qué quieres pedir?", "Elegir", JOptionPane.QUESTION_MESSAGE, null,
+                                botonesCar, botonesCar[0]);
 
+                        if (opcion.equals("Pasta Carbonara")) {
+                            String[] botonesConf = {"Sí", "No"};
+
+                            int confirmar = JOptionPane.showOptionDialog(null, c.obtener(2).toString() + "\n ¿Estás seguro que quieres pedirlo?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                                    JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesConf, botonesConf[0]);
+
+                            switch (confirmar) {
+                                case 0 -> {
+                                    int cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Qué cantidad quieres pedir?"));
+                                    carrito.añadirCarrito(c.obtener(2), cantidad);
+                                }
+
+                                case 1 -> {
+                                    //Aquí debe volver atrás
+                                }
+                            }
                         }
+
+                        if (opcion.equals("Lasaña")) {
+                            String[] botonesConf = {"Sí", "No"};
+
+                            int confirmar = JOptionPane.showOptionDialog(null, c.obtener(15).toString() + "\n ¿Estás seguro que quieres pedirlo?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                                    JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesConf, botonesConf[0]);
+
+                            switch (confirmar) {
+                                case 0 -> {
+                                    int cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Qué cantidad quieres pedir?"));
+                                    carrito.añadirCarrito(c.obtener(15), cantidad);
+                                }
+
+                                case 1 -> {
+                                    //Aquí debe volver atrás
+                                }
+                            }
+                        }
+
+                        if (opcion.equals("Pasta al pesto")) {
+                            String[] botonesConf = {"Sí", "No"};
+
+                            int confirmar = JOptionPane.showOptionDialog(null, c.obtener(16).toString() + "\n ¿Estás seguro que quieres pedirlo?", "Catálogo", JOptionPane.YES_NO_CANCEL_OPTION,
+                                    JOptionPane.WARNING_MESSAGE, null/*icono*/, botonesConf, botonesConf[0]);
+
+                            switch (confirmar) {
+                                case 0 -> {
+                                    boolean valido = true;
+                                    int cantidad = 0;
+                                    do {
+                                    try {
+                                    cantidad = Integer.parseInt(JOptionPane.showInputDialog("¿Qué cantidad quieres pedir?"));
+                                    if (cantidad < 0 || cantidad > c.obtener(16).getStock()) {
+                                        JOptionPane.showMessageDialog(null, "Introduce una cantidad correcta");
+                                    }
+                                    } catch (IllegalArgumentException iae) {
+                                        JOptionPane.showMessageDialog(null, "Introduce valores correctos");
+                                    }
+                                    }while (!valido );
+                                    carrito.añadirCarrito(c.obtener(16), cantidad);
+                                }
+
+                                case 1 -> {
+                                    //Aquí debe volver atrás
+                                }
+                            }
+                        }
+
                     }
 
                     case 2 -> { //Ver Mariscos
@@ -169,7 +284,3 @@ public class Metodos {
         }
     }
 }
-
-
-
-

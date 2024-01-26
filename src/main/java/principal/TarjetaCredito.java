@@ -12,6 +12,7 @@ import java.util.Random;
  */
 public class TarjetaCredito {
 
+    private String nombre;
     private YearMonth fechaCaduc;
     private int[] CVV = new int[3];
     private double saldo;
@@ -19,7 +20,8 @@ public class TarjetaCredito {
     private final int TAM_TARJ = 16;
     String saldoCompl;
 
-    public TarjetaCredito() {
+    public TarjetaCredito(String nombre) {
+        this.nombre = nombre;
         Random rd = new Random();
         int mes = rd.nextInt(1, 13);
         int año = rd.nextInt(2020, 2035);
