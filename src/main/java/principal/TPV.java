@@ -125,24 +125,37 @@ public class TPV {
         return contra;
     }
 
-    public static void main(String[] args) {
-
-        TPV h = new TPV("Entrada");
-        System.out.println(h.getContraseña());
-        System.out.println(h);
-
+    public String getContraAdmin() {
+        return contraAdmin;
     }
+
+
+    public ArrayList<Ticket> getVentasCompletadas() {
+        return ventasCompletadas;
+    }
+
+    public void setVentasCompletadas(ArrayList<Ticket> ventasCompletadas) {
+        this.ventasCompletadas = ventasCompletadas;
+    }
+
+    public ArrayList<Productos> getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(ArrayList<Productos> carrito) {
+        this.carrito = carrito;
+    }
+
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("TPV{");
-        sb.append("id=").append(id);
+        sb.append("TPV: ");
+        sb.append("id= ").append(id);
         sb.append(", ubicacion=").append(ubicacion);
         sb.append(", fechHorSis=").append(fechHorSis);
         sb.append(", contraAdmin=").append(contraAdmin);
-        sb.append(", ventasCompletadas=").append(ventasCompletadas);
-        sb.append(", carrito=").append(carrito);
+        sb.append(", ventasCompletadas= ").append(ventasCompletadas.size());
         sb.append('}');
         return sb.toString();
     }

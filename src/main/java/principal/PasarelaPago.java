@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -90,25 +91,25 @@ public class PasarelaPago {
             if (digito1 == pasarela.get(i).getDigito1()) {
                 digitosCorrectos = true;
             } else {
-                return false;
+                digitosCorrectos = false;
             }
 
-            if (digito2 == pasarela.get(i).getDigito2()) {
+            if (digito2 == pasarela.get(i).getDigito2() && digitosCorrectos == true) {
                 digitosCorrectos = true;
             } else {
-                return false;
+                digitosCorrectos = false;
             }
 
-            if (digito3 == pasarela.get(i).getDigito3()) {
+            if (digito3 == pasarela.get(i).getDigito3() && digitosCorrectos == true) {
                 digitosCorrectos = true;
             } else {
-                return false;
+                digitosCorrectos = false;
             }
 
-            if (digito4 == pasarela.get(i).getDigito4()) {
+            if (digito4 == pasarela.get(i).getDigito4() && digitosCorrectos == true) {
                 digitosCorrectos = true;
             } else {
-                return false;
+                digitosCorrectos = false;
             }
 
             if (digitosCorrectos) {
@@ -163,19 +164,7 @@ public class PasarelaPago {
                 int año = Integer.parseInt(JOptionPane.showInputDialog("Introduce el año de la fecha de caducidad de su tarjeta"));
                 if (año <= 2023) {
                     JOptionPane.showMessageDialog(null, "Su tarjeta está caducada");
-                    respuesta = JOptionPane.showOptionDialog(null,
-                            " ¿Quiere repetir el proceso?", "Tarjeta Caducada", JOptionPane.YES_NO_CANCEL_OPTION,
-                            JOptionPane.WARNING_MESSAGE, null/*icono*/, botones, botones[0]);
-                    switch (respuesta) {
-
-                        case 0 -> {
-                            valido = false;
-                        }
-
-                        case 1 -> {
-                            valido = true;
-                        }
-                    }
+                    return false;
                 }
                 fechaDada = YearMonth.of(año, mes);
             } catch (IllegalArgumentException iae) {

@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -113,6 +114,10 @@ public class Catalogo {
         listaProductos.add(p);
     }
     
+    public int tamaño() {
+        return listaProductos.size();
+    }
+    
     public Productos obtener (int i) {
         System.out.println(listaProductos);
         Productos p = listaProductos.get(i);
@@ -137,3 +142,4 @@ public class Catalogo {
         this.listaProductos = listaProductos;
     }
 }
+

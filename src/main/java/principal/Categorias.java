@@ -9,33 +9,6 @@ package principal;
  * @author yumara
  */
 public enum Categorias {
-        COMIDA("Comida"), BEBIDA("Bebida"), POSTRE("Postre");
+        COMIDA, BEBIDA, POSTRE;
 
-        private String nombre;
-
-    private Categorias(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public static Categorias getCOMIDA() {
-        return COMIDA;
-    }
-
-    public static Categorias getBEBIDA() {
-        return BEBIDA;
-    }
-
-    public static Categorias getPOSTRE() {
-        return POSTRE;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }  
-     
-  
 }
