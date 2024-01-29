@@ -63,6 +63,10 @@ public class TPV {
     }
 
     public String crearContraseña() {
+        boolean valido = true;
+        String contra = "";
+        do {
+            try {
         char minusculas = (char) rd.nextInt(97, 123);
         char mayusculas = (char) rd.nextInt(65, 91);
         char numeros = (char) rd.nextInt(48, 57);
@@ -111,7 +115,13 @@ public class TPV {
                 contraseña[6] = simbolos[rd.nextInt(0, 17)];
             }
         }
-        String contra = new String(contraseña);
+        contra = new String(contraseña);
+        valido = true;
+            } catch (IndexOutOfBoundsException ioobe) {
+                valido = false;
+            }
+            
+        } while (!valido);
         return contra;
     }
 
