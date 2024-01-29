@@ -23,13 +23,8 @@ public class PasarelaPago {
     public PasarelaPago() {
         this.pasarela = new ArrayList<>();
     }
-
-    public  boolean pasarelaPagoB(Carrito c) {
-
-        final int MIL = 1000;
-        final int DIEZ = 10;
-        final int CIEN = 100;
-
+    
+    public void rellenarTarjetas () {
         //Tarjetas de creditos creadas de manera al azar con su constructor vacío
         TarjetaCredito t0 = new TarjetaCredito("Javier");
         TarjetaCredito t1 = new TarjetaCredito("Felipe");
@@ -49,6 +44,15 @@ public class PasarelaPago {
         pasarela.add(t2);
         pasarela.add(t3);
         pasarela.add(t4);
+    }
+
+    public  boolean pasarelaPagoB(Carrito c) {
+
+        final int MIL = 1000;
+        final int DIEZ = 10;
+        final int CIEN = 100;
+
+        
 
         //Variables para comprobar los bucles
         boolean digitosCorrectos = true;

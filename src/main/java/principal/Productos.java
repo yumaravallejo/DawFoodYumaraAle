@@ -38,7 +38,7 @@ public class Productos {
         } else {
             this.iva = IVA.DIEZ;
         }
-        this.precio = (precio*this.iva.getPorcentaje())/100;
+        this.precio = precio - (precio*this.iva.getPorcentaje());
         this.stock = stock;
         this.cantidadPedida = 0;
   

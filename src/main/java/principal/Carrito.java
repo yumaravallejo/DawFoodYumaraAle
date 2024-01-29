@@ -47,11 +47,10 @@ public class Carrito {
     
     public void añadirCarrito(Productos p, int cantidad){
         Productos copia = copiaPrd(p);
-        copia.setCantidadPedida(cantidad);
-        for (int i = 0; i < cantidad; i++){
+        copia.setCantidadPedida(copia.getCantidadPedida() + cantidad);
         carrito.add(copia);
-        precioTotal += (copia.getPrecio()*cantidad);
-        }
+        precioTotal += (copia.getPrecio()*copia.getCantidadPedida());
+        
     }
     
     public void vaciarCarrito(){
@@ -62,6 +61,7 @@ public class Carrito {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < carrito.size(); i++) {
+            sb.append(" ");
             sb.append(carrito.get(i).getNombre());
             sb.append(" Precio: " + carrito.get(i).getPrecio() + "€");
             sb.append(" Cantidad: " + carrito.get(i).getCantidadPedida());

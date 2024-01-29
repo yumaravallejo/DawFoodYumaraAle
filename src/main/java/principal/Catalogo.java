@@ -22,56 +22,56 @@ public class Catalogo {
 
     public void listaProductos() {
 
-        Productos p1 = new Productos("Hamburguesa", "Hamburguesa de "
+        Productos p1 = new Productos("Hamburguesa", "Hamburguesa de"
                 + "ternera con tomate, lechuga y queso ", Categorias.COMIDA,
                 Subcategoria.CARNE, 8, IVA.DIEZ, 32);
-        Productos p2 = new Productos("Entrecot", " Carne de ternera"
+        Productos p2 = new Productos("Entrecot", "Carne de ternera"
                 + " en su punto ", Categorias.COMIDA,
                 Subcategoria.CARNE, 19, IVA.DIEZ, 18);
-        Productos p3 = new Productos("Pasta carbonara", "Espaguetis carbonara "
+        Productos p3 = new Productos("Pasta carbonara", "Espaguetis carbonara"
                 + " con champiñones ", Categorias.COMIDA,
                 Subcategoria.PASTA, 9.50, IVA.DIEZ, 24);
-        Productos p4 = new Productos("Gambas al pil-pil", " Gambas con "
+        Productos p4 = new Productos("Gambas al pil-pil", "Gambas con"
                 + " ajo y cayena ", Categorias.COMIDA,
                 Subcategoria.MARISCO, 12.50, IVA.DIEZ, 40);
-        Productos p5 = new Productos("Coca-Cola", " Refresco con gas ",
+        Productos p5 = new Productos("Coca-Cola", "Refresco con gas",
                 Categorias.BEBIDA, Subcategoria.REFRESCO, 2,
                 IVA.VEINTIUNO, 60);
-        Productos p6 = new Productos("Fanta de naranja", " Refresco con gas ",
+        Productos p6 = new Productos("Fanta de naranja", "Refresco con gas",
                 Categorias.BEBIDA, Subcategoria.REFRESCO, 2,
                 IVA.VEINTIUNO, 62);
-        Productos p7 = new Productos("Fanta de limón", " Refresco con gas ",
+        Productos p7 = new Productos("Fanta de limón", "Refresco con gas",
                 Categorias.BEBIDA, Subcategoria.REFRESCO, 2,
                 IVA.VEINTIUNO, 61);
-        Productos p8 = new Productos("Zumo de manzana", " Bebida sin gas ",
+        Productos p8 = new Productos("Zumo de manzana", "Bebida sin gas",
                 Categorias.BEBIDA, Subcategoria.ZUMO, 1.5,
                 IVA.DIEZ, 56);
-        Productos p9 = new Productos("Zumo de naranja", " Bebida sin gas ",
+        Productos p9 = new Productos("Zumo de naranja", "Bebida sin gas",
                 Categorias.BEBIDA, Subcategoria.ZUMO, 1.5,
                 IVA.DIEZ, 44);
-        Productos p10 = new Productos("Zumo de piña", " Bebida sin gas ",
+        Productos p10 = new Productos("Zumo de piña", "Bebida sin gas",
                 Categorias.BEBIDA, Subcategoria.ZUMO, 1.5,
                 IVA.DIEZ, 57);
-        Productos p11 = new Productos("Cerveza", " Cerveza Cruzcampo ",
+        Productos p11 = new Productos("Cerveza", "Cerveza Cruzcampo",
                 Categorias.BEBIDA, Subcategoria.ALCOHOL, 2.3,
                 IVA.VEINTIUNO, 57);
-        Productos p12 = new Productos("Vino tinto", " Vino tinto ",
+        Productos p12 = new Productos("Vino tinto", "Vino tinto",
                 Categorias.BEBIDA, Subcategoria.ALCOHOL, 32,
                 IVA.VEINTIUNO, 20);
-        Productos p13 = new Productos("Vino blanco", " Vino blanco ",
+        Productos p13 = new Productos("Vino blanco", " Vino blanco",
                 Categorias.BEBIDA, Subcategoria.ALCOHOL, 27,
                 IVA.VEINTIUNO, 22);
-        Productos p14 = new Productos("Solomillo al roquefort", " Solomillo cocinado en su punto"
+        Productos p14 = new Productos("Solomillo al roquefort", "Solomillo cocinado en su punto"
                 + " junto a salsa roquefort", Categorias.COMIDA,
                 Subcategoria.CARNE, 12, IVA.DIEZ, 24);
-        Productos p15 = new Productos("Nuggets", " 13 nuggets ",
+        Productos p15 = new Productos("Nuggets", "13 nuggets",
                 Categorias.COMIDA, Subcategoria.CARNE, 6,
                 IVA.DIEZ, 24);
-        Productos p16 = new Productos("Lasaña", "Lasaña ",
+        Productos p16 = new Productos("Lasaña", "Lasaña",
                 Categorias.COMIDA,Subcategoria.PASTA, 10, IVA.DIEZ, 40);
         Productos p17 = new Productos("Pasta al pesto", "Macarrones al pesto",
                 Categorias.COMIDA,Subcategoria.PASTA, 9.50, IVA.DIEZ, 24);
-        Productos p18 = new Productos("Ostras", "Ostras servidas con limón (se cobra la unidad) ", Categorias.COMIDA,
+        Productos p18 = new Productos("Ostras", "Ostras servidas con limón (se cobra la unidad)", Categorias.COMIDA,
                 Subcategoria.MARISCO, 5.50, IVA.DIEZ, 30);
         Productos p19 = new Productos("Almejas finas", "Almejas finas en salsa de ajito", Categorias.COMIDA,
                 Subcategoria.MARISCO, 28, IVA.DIEZ, 70);
@@ -100,7 +100,11 @@ public class Catalogo {
         listaProductos.add(p15);
         listaProductos.add(p16);
         listaProductos.add(p17);
+        listaProductos.add(p18);
         listaProductos.add(p19);
+        listaProductos.add(p20);
+        listaProductos.add(p21);
+        listaProductos.add(p22);
 
     }
 
@@ -110,15 +114,18 @@ public class Catalogo {
     }
     
     public Productos obtener (int i) {
-        return listaProductos.get(i);
+        System.out.println(listaProductos);
+        Productos p = listaProductos.get(i);
+        return p;
     }
     
-    
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Catálogo \n").append(listaProductos);
+        for (int i = 0; i < listaProductos.size(); i++) {
+            sb.append(listaProductos.get(i));
+            sb.append("\n");
+        }
         return sb.toString();
     }
 
