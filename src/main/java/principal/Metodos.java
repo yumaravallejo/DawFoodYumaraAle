@@ -52,7 +52,7 @@ public class Metodos {
                 }
 
                 case 1 -> { //Modo Administrador
-                   
+
                     repeticion = true;
                 }
 
@@ -1029,5 +1029,142 @@ public class Metodos {
 
         } while (menuPrincipal);
         return true;
+    }
+
+    // Metodo que se usa dentro de administrador en el apartado añadir producto para
+    // seleccionar subcategoria
+    public static int matriz(int opcion) {
+        int option = 0;
+        if (opcion == 0) {
+            Subcategoria[] Subcategorias = {Subcategoria.CARNE, Subcategoria.MARISCO, Subcategoria.PASTA};
+            option = JOptionPane.showOptionDialog(null,
+                    " ¿Que modo desea usar?", "Modo de uso", JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.WARNING_MESSAGE, null/*icono*/, Subcategorias, Subcategorias[0]);
+        }
+        if (opcion == 1) {
+            Subcategoria[] Subcategorias = {Subcategoria.ALCOHOL, Subcategoria.REFRESCO, Subcategoria.ZUMO};
+            option = JOptionPane.showOptionDialog(null,
+                    " ¿Que modo desea usar?", "Modo de uso", JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.WARNING_MESSAGE, null/*icono*/, Subcategorias, Subcategorias[0]);
+        }
+        if (opcion == 2) {
+            Subcategoria[] Subcategorias = {Subcategoria.POSTRE};
+            option = JOptionPane.showOptionDialog(null,
+                    " ¿Que modo desea usar?", "Modo de uso", JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.WARNING_MESSAGE, null/*icono*/, Subcategorias, Subcategorias[0]);
+        }
+        return option;
+    }
+
+    // Metodo que se encarga de la parte de Administrador
+    public static boolean Administrador(TPV TPV, Catalogo c) {
+        char repetir = 'S';
+        System.out.println(TPV.getContraseña());
+        do {
+            repetir = 'S';
+            try {
+                String contra = JOptionPane.showInputDialog(null, "Introduce la contraseña");
+                if (contra.equals(TPV.getContraseña())) {
+                    System.out.println("La contraseña es correcta");
+                    break;
+                } else {
+                    Throwable a = null;
+                    throw new Exception("La contraseña es incorrecta", a);
+                }
+            } catch (Exception a) {
+                String repetirTexto = JOptionPane.showInputDialog(null, "Quiere volver a intentar introducir la contraseña");
+                repetir = repetirTexto.charAt(0);
+                repetir = Character.toUpperCase(repetir);
+            }
+
+        } while (repetir == 'S');
+
+        String[] botones = {"Modificar productos", " Añadir productos", "Borrar productos",
+            " Ver tickets"};
+
+        int variable = JOptionPane.showOptionDialog(null,
+                " ¿Que modo desea usar?", "Modo de uso", JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.WARNING_MESSAGE, null/*icono*/, botones, botones[0]);
+
+        switch (variable) {
+            case 0 -> {
+
+                c.mostrarLista();
+                String eleccionTexto = JOptionPane.showInputDialog("Introduce la posicion del objeto a modificar");
+                int eleccion = Integer.parseInt(eleccionTexto);
+
+                c.getListaProductos().get(eleccion);
+
+                c.eliminarProducto(eleccion);
+                crearObjeto(c);
+
+            }
+            case 1 -> {
+                //Añadir producto
+                crearObjeto(c);
+
+            }
+            case 2 -> {
+                // Eliminar producto
+                c.mostrarLista();
+                String eleccionTexto = JOptionPane.showInputDialog("Introduzca la posicion del prodcuto a eliminar");
+                int eleccion = Integer.parseInt(eleccionTexto);
+
+                c.eliminarProducto(eleccion);
+
+            }
+            case 3 -> {
+                // Ver tickets
+                TPV.ventasTotales();
+
+            }
+            
+            case 4 -> {
+                return true;
+            }
+        }
+        return true;
+    }
+
+    public static void crearObjeto(Catalogo c){
+        //Añadir producto
+
+                Subcategoria[][] subcategoria = new Subcategoria[3][3];
+                IVA iva = IVA.DIEZ;
+                subcategoria[0][0] = Subcategoria.CARNE;
+                subcategoria[1][0] = Subcategoria.MARISCO;
+                subcategoria[2][0] = Subcategoria.PASTA;
+                subcategoria[0][1] = Subcategoria.ALCOHOL;
+                subcategoria[1][1] = Subcategoria.REFRESCO;
+                subcategoria[2][1] = Subcategoria.ZUMO;
+                subcategoria[0][2] = Subcategoria.POSTRE;
+
+                String nombre = JOptionPane.showInputDialog(null, "Introduce  nombre");
+                String descripcion = JOptionPane.showInputDialog(null, "Introduce la descripcion");
+                Categorias[] categorias = {Categorias.COMIDA, Categorias.BEBIDA,
+                    Categorias.POSTRE};
+
+                int opcion = JOptionPane.showOptionDialog(null,
+                        " Introduce la categoria", "Categoria", JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.WARNING_MESSAGE, null/*icono*/, categorias, categorias[0]);
+
+                int option = matriz(opcion);
+
+                String precioTexto = JOptionPane.showInputDialog(null, "Introduce el precio");
+                double precio = Double.parseDouble(precioTexto);
+                precio *= 1000;
+
+                String stockTexto = JOptionPane.showInputDialog(null, "Introduce el stock");
+                int stock = Integer.parseInt(stockTexto);
+
+                if (opcion == 0 && option == 1 || opcion == 1 && option == 1) {
+                    iva = IVA.VEINTIUNO;
+                } else {
+                    iva = IVA.DIEZ;
+                }
+                Productos p = new Productos(nombre, descripcion, categorias[opcion],
+                        subcategoria[opcion][option], precio, iva, stock);
+                c.añadir(p);
+
     }
 }

@@ -1,4 +1,3 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -7,6 +6,8 @@ package principal;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,20 +70,19 @@ public class Catalogo {
                 Categorias.COMIDA, Subcategoria.CARNE, 6,
                 IVA.DIEZ, 24);
         Productos p16 = new Productos("Lasaña", "Lasaña",
-                Categorias.COMIDA,Subcategoria.PASTA, 10, IVA.DIEZ, 40);
+                Categorias.COMIDA, Subcategoria.PASTA, 10, IVA.DIEZ, 40);
         Productos p17 = new Productos("Pasta al pesto", "Macarrones al pesto",
-                Categorias.COMIDA,Subcategoria.PASTA, 9.50, IVA.DIEZ, 24);
+                Categorias.COMIDA, Subcategoria.PASTA, 9.50, IVA.DIEZ, 24);
         Productos p18 = new Productos("Ostras", "Ostras servidas con limón (se cobra la unidad)", Categorias.COMIDA,
                 Subcategoria.MARISCO, 5.50, IVA.DIEZ, 30);
         Productos p19 = new Productos("Almejas finas", "Almejas finas en salsa de ajito", Categorias.COMIDA,
                 Subcategoria.MARISCO, 28, IVA.DIEZ, 70);
-        Productos p20 = new Productos("Crepes", "Crepes con nata y chocolate", Categorias.POSTRE, 
+        Productos p20 = new Productos("Crepes", "Crepes con nata y chocolate", Categorias.POSTRE,
                 Subcategoria.POSTRE, 3, IVA.DIEZ, 40);
-        Productos p21 = new Productos("Tarta de queso", "Tarta de queso con sirope de frutos rojos", Categorias.POSTRE, 
+        Productos p21 = new Productos("Tarta de queso", "Tarta de queso con sirope de frutos rojos", Categorias.POSTRE,
                 Subcategoria.POSTRE, 4.50, IVA.DIEZ, 20);
-        Productos p22 = new Productos("Flan", "Flan de vainilla", Categorias.POSTRE, 
+        Productos p22 = new Productos("Flan", "Flan de vainilla", Categorias.POSTRE,
                 Subcategoria.POSTRE, 2.50, IVA.DIEZ, 35);
-        
 
         listaProductos.add(p1);
         listaProductos.add(p2);
@@ -106,7 +106,6 @@ public class Catalogo {
         listaProductos.add(p20);
         listaProductos.add(p21);
         listaProductos.add(p22);
-
     }
 
     //agrega al final de la lista el nuevo elemento.
@@ -118,12 +117,27 @@ public class Catalogo {
         return listaProductos.size();
     }
     
-    public Productos obtener (int i) {
+ 
+
+
+    public Productos obtener(int i) {
+
         System.out.println(listaProductos);
         Productos p = listaProductos.get(i);
         return p;
     }
-    
+
+    public void mostrarLista() {
+        for (int i = 0; i < listaProductos.size(); i++) {
+            System.out.print(i+". ");
+            System.out.println(listaProductos.get(i));
+        }
+    }
+            
+    public void eliminarProducto(int i){
+        listaProductos.remove(i);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -140,6 +154,11 @@ public class Catalogo {
 
     public void setListaProductos(ArrayList<Productos> listaProductos) {
         this.listaProductos = listaProductos;
+    }
+
+    public void eliminarProducto(Productos i) {
+        listaProductos.remove(i);
+
     }
 }
 

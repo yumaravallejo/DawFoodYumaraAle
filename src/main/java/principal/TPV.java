@@ -41,6 +41,12 @@ public class TPV {
     public void ventaHecha (Ticket t){
         this.ventasCompletadas.add(t);
     }
+    public void ventasTotales (){
+        for(int i=0; i<ventasCompletadas.size();i++){
+            System.out.println(i+". ");
+            System.out.println(ventasCompletadas.get(i));
+        }
+    }
     
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
